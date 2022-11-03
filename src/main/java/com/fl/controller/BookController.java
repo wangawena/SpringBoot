@@ -56,4 +56,13 @@ public class BookController {
         daoServer.addBood(book);
         return "success";
     }
+
+
+    @GetMapping("/findBookByAuthor")
+    public List<Book> findBookByAuthor(String author)
+    {
+        List<Book> bookList=new ArrayList<>();
+        bookList=daoServer.findBookByAuthor(author);
+        return bookList;
+    }
 }

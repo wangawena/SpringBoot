@@ -24,4 +24,8 @@
         insert into book(name,author) values(#{name},#{author});
     </insert>
 
+    <select id="findBookByAuthor" resultType="Book">
+        select * from book where author=#{author};
+    </select>
+
 </mapper>

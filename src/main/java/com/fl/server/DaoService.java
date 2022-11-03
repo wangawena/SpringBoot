@@ -15,4 +15,6 @@ public interface DaoService {
     public Book findById(int id);
 
     public void addBood(Book book);
+
+    public List<Book> findBookByAuthor(String author);
 }

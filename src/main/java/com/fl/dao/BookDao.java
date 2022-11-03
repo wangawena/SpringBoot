@@ -25,4 +25,7 @@ public interface BookDao {
 
     //新增书籍
     public void addBook(Book book);
+
+    //根据作者查找书籍
+    public List<Book> findBookByAuthor(String author);
 }

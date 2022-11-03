@@ -40,4 +40,9 @@ public class DaoServerImpl implements DaoService {
         bookDao.addBook(book);
     }
 
+
+    public List<Book> findBookByAuthor(String author)
+    {
+        return bookDao.findBookByAuthor(author);
+    }
 }
