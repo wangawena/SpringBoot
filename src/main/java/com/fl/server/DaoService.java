@@ -13,4 +13,6 @@ public interface DaoService {
     public void delectById(int id);
 
     public Book findById(int id);
+
+    public void addBood(Book book);
 }

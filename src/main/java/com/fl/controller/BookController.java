@@ -47,4 +47,13 @@ public class BookController {
         }
         return "错误！没有该对象";
     }
+
+
+
+    @PostMapping("/addBook")
+    public String addBook(Book book)
+    {
+        daoServer.addBood(book);
+        return "success";
+    }
 }

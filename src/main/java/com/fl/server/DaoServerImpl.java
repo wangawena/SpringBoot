@@ -34,4 +34,10 @@ public class DaoServerImpl implements DaoService {
 
         return bookDao.findById(id);
     }
+
+    @Override
+    public void addBood(Book book) {
+        bookDao.addBook(book);
+    }
+
 }

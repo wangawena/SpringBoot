@@ -11,11 +11,18 @@ import java.util.List;
 @Repository
 public interface BookDao {
 
+    //查询所有书籍
     public List<Book> findAll();
 
+    //通过名字查询书籍
     public List<Book> findByName(String name);
 
+    //通过ID删除书籍
     public void delectById(int id);
 
+    //通过ID查询书籍
     public Book findById(int id);
+
+    //新增书籍
+    public void addBook(Book book);
 }
