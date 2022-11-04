@@ -1,6 +1,7 @@
 package com.fl.server;
 
 import com.fl.dao.BookDao;
+import com.fl.pojo.Author;
 import com.fl.pojo.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,4 +46,18 @@ public class DaoServerImpl implements DaoService {
     {
         return bookDao.findBookByAuthor(author);
     }
+
+
+    public List<Author> findAuthorInformationByBook(String bookName)
+    {
+        System.out.println(bookName);
+        List<String> authorNames=bookDao.findAuthorByBook(bookName);
+        System.out.println(authorNames);
+        if(authorNames==null)
+            return null;
+        List<Author> authors=bookDao.findInformationByName(authorNames);
+        return authors;
+    }
+
+
 }

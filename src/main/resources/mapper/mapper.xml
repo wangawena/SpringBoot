@@ -28,4 +28,15 @@
         select * from book where author=#{author};
     </select>
 
+    <select id="findAuthorByBook" resultType="String">
+        select author from book where name=#{bookName}
+    </select>
+
+    <select id="findInformationByName" resultType="Author">
+        select * from author where name in
+        <foreach collection="list" item="name" open="(" separator="," close=")">
+            #{name}
+        </foreach>
+    </select>
+
 </mapper>

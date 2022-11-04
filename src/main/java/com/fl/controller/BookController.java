@@ -1,5 +1,6 @@
 package com.fl.controller;
 
+import com.fl.pojo.Author;
 import com.fl.pojo.Book;
 import com.fl.server.DaoServerImpl;
 import com.fl.server.DaoService;
@@ -64,5 +65,14 @@ public class BookController {
         List<Book> bookList=new ArrayList<>();
         bookList=daoServer.findBookByAuthor(author);
         return bookList;
+    }
+
+
+
+    @GetMapping("/findAInforByBook")
+    public List<Author> findAuthorInformationByBook(String bookName)
+    {
+        List<Author> authors=daoServer.findAuthorInformationByBook(bookName);
+        return authors;
     }
 }

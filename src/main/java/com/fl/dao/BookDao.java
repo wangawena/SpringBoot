@@ -1,6 +1,7 @@
 package com.fl.dao;
 
 
+import com.fl.pojo.Author;
 import com.fl.pojo.Book;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -28,4 +29,11 @@ public interface BookDao {
 
     //根据作者查找书籍
     public List<Book> findBookByAuthor(String author);
+
+
+    //查询书籍作者名字
+    public List<String> findAuthorByBook(String bookName);
+
+    //通过作者名查找作者信息
+    public List<Author> findInformationByName(List<String> name);
 }

@@ -1,5 +1,6 @@
 package com.fl.server;
 
+import com.fl.pojo.Author;
 import com.fl.pojo.Book;
 
 import java.util.List;
@@ -17,4 +18,6 @@ public interface DaoService {
     public void addBood(Book book);
 
     public List<Book> findBookByAuthor(String author);
+
+    public List<Author> findAuthorInformationByBook(String bookName);
 }
