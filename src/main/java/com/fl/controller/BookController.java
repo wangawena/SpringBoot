@@ -54,8 +54,12 @@ public class BookController {
     @PostMapping("/addBook")
     public String addBook(Book book)
     {
-        daoServer.addBood(book);
-        return "success";
+        int number=daoServer.addBood(book);
+        System.out.println(number);
+        if(number==1)
+            return "success";
+        else
+            return "false";
     }
 
 
@@ -75,4 +79,5 @@ public class BookController {
         List<Author> authors=daoServer.findAuthorInformationByBook(bookName);
         return authors;
     }
+
 }

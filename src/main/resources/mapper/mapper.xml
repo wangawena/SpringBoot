@@ -20,7 +20,7 @@
         select * from book where id=#{id}
     </select>
 
-    <insert id="addBook">
+    <insert id="addBook" >
         insert into book(name,author) values(#{name},#{author});
     </insert>
 

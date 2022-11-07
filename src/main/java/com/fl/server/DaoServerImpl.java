@@ -37,8 +37,8 @@ public class DaoServerImpl implements DaoService {
     }
 
     @Override
-    public void addBood(Book book) {
-        bookDao.addBook(book);
+    public int addBood(Book book) {
+        return bookDao.addBook(book);
     }
 
 
