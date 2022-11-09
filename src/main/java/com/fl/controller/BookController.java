@@ -28,8 +28,8 @@ public class BookController {
 
     }
 
-    @GetMapping("/findByName/{name}")
-    public List<Book> findByName(@PathVariable String name)
+    @GetMapping("/findByBookName")
+    public List<Book> findByBookName(String name)
     {
         List<Book> bookList=new ArrayList<Book>();
         bookList=daoServer.findByName(name);
@@ -37,8 +37,8 @@ public class BookController {
     }
 
 
-    @GetMapping("/delectById/{id}")
-    public String delectById(@PathVariable int id)
+    @GetMapping("/delectById")
+    public String delectById(int id)
     {
         Book book=daoServer.findById(id);
         if(book!=null) {

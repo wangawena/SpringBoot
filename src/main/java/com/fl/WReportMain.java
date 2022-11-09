@@ -16,4 +16,5 @@ public class WReportMain {
     public static void main(String[] args) {
         SpringApplication.run(WReportMain.class,args);
     }
+
 }
