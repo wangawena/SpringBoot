@@ -38,5 +38,4 @@
             #{name}
         </foreach>
     </select>
-
 </mapper>
