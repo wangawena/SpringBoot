@@ -27,4 +27,13 @@ public class AuthorServerImpl implements AuthorServer{
     public List<Author> findAuthorByCountry(String country) {
         return authorDao.findAuthorByCountry(country);
     }
+
+    @Override
+    public String deletcByName(String name) {
+        int i= authorDao.deletcByName(name);
+        if(i!=0)
+            return "success";
+        else
+            return "falce";
+    }
 }

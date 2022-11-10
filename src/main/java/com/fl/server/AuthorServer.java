@@ -11,4 +11,6 @@ public interface AuthorServer {
     public List<Author> findAuthorByName(String name);
 
     public List<Author> findAuthorByCountry(String country);
+
+    public String deletcByName(String name);
 }

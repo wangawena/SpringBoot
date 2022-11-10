@@ -35,4 +35,9 @@ public class AuthorController {
         return authorServer.findAuthorByCountry(country);
     }
 
+
+    public String deletcByName(String name)
+    {
+        return authorServer.deletcByName(name);
+    }
 }

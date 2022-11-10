@@ -16,4 +16,7 @@ public interface AuthorDao {
 
     public List<Author> findAuthorByCountry(String country);
 
+
+    public int deletcByName(String name);
+
 }
