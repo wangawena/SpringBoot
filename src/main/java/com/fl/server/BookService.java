@@ -5,7 +5,7 @@ import com.fl.pojo.Book;
 
 import java.util.List;
 
-public interface DaoService {
+public interface BookService {
 
     public List<Book> findAll();
 

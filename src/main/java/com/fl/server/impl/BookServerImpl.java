@@ -1,15 +1,16 @@
-package com.fl.server;
+package com.fl.server.impl;
 
 import com.fl.dao.BookDao;
 import com.fl.pojo.Author;
 import com.fl.pojo.Book;
+import com.fl.server.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service("DaoService1")
-public class DaoServerImpl implements DaoService {
+public class BookServerImpl implements BookService {
 
     @Autowired
     private BookDao bookDao;

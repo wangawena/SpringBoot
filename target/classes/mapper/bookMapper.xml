@@ -16,4 +16,8 @@
     <select id="findAuthorByCountry" resultType="Author">
         select * from author where country=#{country};
     </select>
+
+    <delete id="deletcByName">
+        ddeletc from author where name=#{name};
+    </delete>
 </mapper>

@@ -2,8 +2,7 @@ package com.fl.controller;
 
 import com.fl.pojo.Author;
 import com.fl.pojo.Book;
-import com.fl.server.DaoServerImpl;
-import com.fl.server.DaoService;
+import com.fl.server.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +17,7 @@ public class BookController {
 
     @Autowired
     @Qualifier("DaoService1")
-    private DaoService daoServer;
+    private BookService daoServer;
 
     @GetMapping("/findAll")
     public List<Book> findAll()
