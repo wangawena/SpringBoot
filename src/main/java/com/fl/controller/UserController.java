@@ -1,6 +1,8 @@
 package com.fl.controller;
 
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
 import com.fl.pojo.Result;
 import com.fl.pojo.User;
 import com.fl.server.UserServer;
@@ -24,6 +26,8 @@ public class UserController {
     @Autowired
     private UserServer userServer;
 
+    //密钥
+    private String jwtSecret="XDD6897!&@H.,?";
     //@PostMapping("/login")
     @GetMapping("/login")
     public Result login(User user)
@@ -42,6 +46,7 @@ public class UserController {
         }
         //if(!"".equals(u))
 
+        System.out.println(getToken(u.getAccount(),randomString(), String.valueOf(System.currentTimeMillis()));
         return result;
     }
 
@@ -59,4 +64,16 @@ public class UserController {
         }
         return string;
     }
+
+
+    public String getToken(String account,String randomString,String time)
+    {
+        return JWT.create()
+                .withClaim("account",account)
+                .withClaim("randomString",randomString)
+                .withClaim("expireAt",time+3000)
+                .sign(Algorithm.HMAC256(jwtSecret));
+    }
 }
+
+
