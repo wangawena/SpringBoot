@@ -46,7 +46,7 @@ public class UserController {
         }
         //if(!"".equals(u))
 
-        System.out.println(getToken(u.getAccount(),randomString(), String.valueOf(System.currentTimeMillis()));
+        System.out.println(getToken(u.getAccount(),randomString(), String.valueOf(System.currentTimeMillis())));
         return result;
     }
 
