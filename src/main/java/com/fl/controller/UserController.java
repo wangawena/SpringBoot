@@ -28,10 +28,20 @@ public class UserController {
 
     //密钥
     private String jwtSecret="XDD6897!&@H.,?";
-    //@PostMapping("/login")
-    @GetMapping("/login")
+
+    @PostMapping("/login")
+    //@GetMapping("/login")
     public Result login(User user)
     {
+        if(user.getAccount()==null || user.getPassword()==null)
+        {
+            Result result=new Result();
+            result.setMsg("未填写账号或密码！");
+            result.setData("");
+            result.setSuccess("false");
+            return  result;
+        }
+
         Result result=userServer.login(user);
         HttpSession session= ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes())
                 .getRequest().getSession();
@@ -44,9 +54,10 @@ public class UserController {
             System.out.println(session.getAttribute("account"));
             System.out.println(session.getAttribute("password"));
         }
-        //if(!"".equals(u))
 
-        System.out.println(getToken(u.getAccount(),randomString(), String.valueOf(System.currentTimeMillis())));
+        result.setSuccess("success");
+        result.setToken(getToken(u.getAccount(),randomString(), String.valueOf(System.currentTimeMillis())));
+        
         return result;
     }
 

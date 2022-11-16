@@ -16,6 +16,10 @@ public class MyFilter implements Filter {
 
     FilterTime filterTime=new FilterTime();
 
+    //需要过滤的路径
+    String[] filterURL={"/book/findAll",
+            "/author/*"};
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         Filter.super.init(filterConfig);
@@ -31,16 +35,35 @@ public class MyFilter implements Filter {
         HttpSession session= ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
                 .getRequest().getSession();
 
-        String URI=((HttpServletRequest)servletRequest).getRequestURI();
-        System.out.println("URI:"+URI);
+        //获取访问路径
+        String URL=((HttpServletRequest)servletRequest).getRequestURI();
+        System.out.println("URL:"+URL);
 
+        /*
         if("/user/login".compareTo(URI)!=0)
         {
             String account = session.getAttribute("account").toString();
             String password = session.getAttribute("password").toString();
 
             System.out.println("account:" + account + "\n" + "password:" + password);
+        }*/
+
+        System.out.println(isURL(URL));
+        if(isURL(URL))
+        {
+            //获取token
+            String token=((HttpServletRequest)servletRequest).getHeader("Authorization");
+            System.out.println("Tokne:"+token);
+            /*
+            String account = session.getAttribute("account").toString();//账号
+            String password = session.getAttribute("password").toString();//密码
+            System.out.println("account:" + account + "\n" + "password:" + password);
+            */
         }
+
+
+
+
         filterChain.doFilter(servletRequest,servletResponse);
         filterTime.setEndTime(System.currentTimeMillis());
         System.out.println("过滤器执行时间："+filterTime.getSubTime());
@@ -50,5 +73,18 @@ public class MyFilter implements Filter {
     public void destroy() {
         Filter.super.destroy();
         System.out.println("销毁过滤器");
+    }
+
+
+    //判断该路径是否需要过滤
+    public boolean isURL(String URL)
+    {
+        for(String s: filterURL)
+        {
+            //需要过滤
+            if(s.compareTo(URL)==0)
+                return true;
+        }
+        return false;
     }
 }

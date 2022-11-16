@@ -7,6 +7,8 @@ public class Result<T>{
     private String success;
     private T data;
 
+    private String token;
+
     public void setData(T data) {
         this.data = data;
     }
@@ -19,6 +21,10 @@ public class Result<T>{
         this.success = success;
     }
 
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     public String getMsg() {
         return msg;
     }
@@ -27,6 +33,9 @@ public class Result<T>{
         return data;
     }
 
+    public String getToken() {
+        return token;
+    }
 
     @Override
     public String toString() {
