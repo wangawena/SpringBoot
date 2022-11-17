@@ -1,8 +1,10 @@
 package com.fl.util;
 
 import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.Claim;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.fl.pojo.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -61,9 +63,13 @@ public class JWTutil {
     public Boolean isVerfify(String token)
     {
         try {
-            Claims claims=Jwts.parser()
-                    .setSigningKey(jwtSecret)
-                    .parseClaimsJws(token).getBody();
+            Algorithm algorithm=Algorithm.HMAC256(jwtSecret);//加密算法
+            JWTVerifier verifier=JWT.require(algorithm).build();
+            DecodedJWT jwt=verifier.verify(token);
+
+            /*Claims claims=Jwts.parser()
+                    .setSigningKey(algorithm)
+                    .parseClaimsJws(token).getBody();*/
             return true;
         }catch (Exception e)
         {

@@ -68,10 +68,11 @@ public class MyFilter implements Filter {
 
 
 
-
-        filterChain.doFilter(servletRequest,servletResponse);
-        filterTime.setEndTime(System.currentTimeMillis());
-        System.out.println("过滤器执行时间："+filterTime.getSubTime());
+        else {
+            filterChain.doFilter(servletRequest, servletResponse);
+            filterTime.setEndTime(System.currentTimeMillis());
+            System.out.println("过滤器执行时间：" + filterTime.getSubTime());
+        }
     }
 
     @Override
