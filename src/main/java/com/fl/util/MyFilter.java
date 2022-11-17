@@ -2,6 +2,7 @@ package com.fl.util;
 
 
 import com.fl.pojo.FilterTime;
+import io.jsonwebtoken.Jwts;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -39,16 +40,7 @@ public class MyFilter implements Filter {
         String URL=((HttpServletRequest)servletRequest).getRequestURI();
         System.out.println("URL:"+URL);
 
-        /*
-        if("/user/login".compareTo(URI)!=0)
-        {
-            String account = session.getAttribute("account").toString();
-            String password = session.getAttribute("password").toString();
-
-            System.out.println("account:" + account + "\n" + "password:" + password);
-        }*/
-
-        System.out.println(isURL(URL));
+        System.out.println("访问路径:"+isURL(URL));
         if(isURL(URL))
         {
             //获取token
@@ -59,6 +51,19 @@ public class MyFilter implements Filter {
             String password = session.getAttribute("password").toString();//密码
             System.out.println("account:" + account + "\n" + "password:" + password);
             */
+
+            filterTime.setEndTime(System.currentTimeMillis());
+            System.out.println("过滤器执行时间："+filterTime.getSubTime());
+
+            JWTutil jwTutil=new JWTutil();
+            if(token!=null && jwTutil.isVerfify(token))
+                filterChain.doFilter(servletRequest,servletResponse);
+            else
+            {
+                HttpServletRequest request=(HttpServletRequest)servletRequest;
+                String requestURI="/unsuccess";
+                servletRequest.getRequestDispatcher(requestURI).forward(servletRequest,servletResponse);
+            }
         }
 
 

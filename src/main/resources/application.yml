@@ -12,3 +12,6 @@ mybatis:
   mapper-locations: mapper/*.xml
 
   type-aliases-package: com.fl.pojo
+
+
+jwtSecret: XDD6897!&@H.,?
